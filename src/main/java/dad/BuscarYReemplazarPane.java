@@ -1,14 +1,15 @@
 package dad;
 
 import javafx.application.Application;
-import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.Control;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -113,13 +114,27 @@ public class BuscarYReemplazarPane extends Application {
 		gp.getColumnConstraints().setAll(cols);
 		
 		cols[0].setMinWidth(35);
-	
+		cols[0].setHgrow(Priority.ALWAYS);
+		
 		cols[1].setHgrow(Priority.ALWAYS);
 		cols[1].setPercentWidth(45);
-	
-		cols[2].setPercentWidth(30);
+		cols[1].setMinWidth(Control.USE_PREF_SIZE);
 		
-		HBox all = new HBox(gp, lado);
+		cols[2].setHgrow(Priority.ALWAYS);
+		cols[2].setPercentWidth(30);
+		cols[2].setMinWidth(Control.USE_PREF_SIZE);
+		
+		lado.setMinWidth(Control.USE_PREF_SIZE);
+		
+		BorderPane all = new BorderPane();
+		
+		all.setCenter(gp);
+		all.setRight(lado);
+		
+		gp.setStyle("-fx-background-color: red");
+		lado.setStyle("-fx-background-color: blue");
+		all.setStyle("-fx-background-color: green");
+		
 		all.setPadding(new Insets(10));
 		
 		primaryStage.setTitle("Buscar y reemplazar");
